@@ -12,8 +12,8 @@
         <el-row :gutter="20" class="grid">
           <el-col :span="6" v-for="(item, index) in materials" :key="index">
             <el-card shadow="hover" :body-style="{ padding: '10px' }">
-              <img :src="item.image" class="card-image" />
-              <div class="card-title">{{ item.title }}</div>
+              <img :src="item.url" class="card-image" />
+              <div class="card-title">{{ item.author }}</div>
             </el-card>
           </el-col>
         </el-row>
@@ -29,8 +29,8 @@ import axios from 'axios'
 const materials = ref([])
 
 onMounted(() => {
-  axios.get('https://m1.apifoxmock.com/m1/6217252-5910738-default/test').then((res) => {
-    materials.value = res.data
+  axios.get('http://localhost:8080/show').then((res) => {
+    materials.value = res.data.data
   })
 })
 </script>
