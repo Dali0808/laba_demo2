@@ -19,13 +19,52 @@
           </transition>
         </div>
         <transition name="fade">
-          <img v-if="showImage" src="@/assets/main.jpg" alt="Main Image" class="main-image" />
+          <img v-if="showImage" src="@/assets/main.jpg" alt="Main Image" class="main-image main-image-1" />
         </transition>
       </div>
     </el-main>
     <el-main class="secondary-section">
+      <div class="image-text-block">
+        <transition name="fade">
+          <img v-if="showImage" src="@/assets/main2.jpg" alt="Main Image" class="main-image main-image-2" />
+        </transition>
+        <div class="side-text">
+          <h1 class="title">关于我——计算机小喇叭！</h1>
+  <p class="description">
+    嘿嘿，你好呀！我是<strong>计算机小喇叭</strong>，是计算机与信息学院的吉祥物~ 你没看错，我是一台会说话、懂编程的电脑，还是由我们超棒的<strong>青年新媒体中心</strong>亲手设计的喔！
+  </p>
+  <p class="description">
+    我的任务是传递信息、分享知识、播报学院的新鲜事，让大家都能轻松了解前沿科技和学习资源！无论你是菜鸟小白还是技术大佬，我都会为你摇旗呐喊，打Call助力～
+  </p>
+  <p class="description">
+    如果你在校园里见到我，不要害羞，来给我打个招呼吧，说不定我会送你一个“字节微笑”哦 😊
+  </p>
+        </div>
+      </div>
+
+  <!-- <div class="block text-center" m="t-4">
+    <span class="demonstration">Switch when indicator is clicked</span>
+    <el-carousel trigger="click" height="150px">
+      <el-carousel-item v-for="item in 4" :key="item">
+        <h3 class="small justify-center" text="2xl">{{ item }}</h3>
+      </el-carousel-item>
+    </el-carousel>
+  </div> -->
+
+
+      <div class="image-text-block-2">
+        <div class="site-purpose-text fade-in-text">
+          <h2>本网站的作用：</h2>
+          <p>本网站用于宣传小喇叭形象以及帮助青年新媒体中心线上管理拍摄素材。</p>
+          <p>如果你对我们的拍摄素材感兴趣，可以在右上角素材模块去看看喔。</p>
+        </div>
+        <transition name="fade">
+          <img v-if="showImage" src="@/assets/main4.jpg" alt="Main Image" class="main-image main-image-3 right-shift" />
+        </transition>
+      </div>
+      <br>
       <transition name="fade">
-        <img v-if="showImage" src="@/assets/main2.jpg" alt="Main Image" class="main-image" />
+        <img v-if="showImage" src="@/assets/main3.jpg" alt="Main Image" class="main-image main-image-4" />
       </transition>
       <h2>深入了解</h2>
       <p>在这里你可以添加更多说明内容、FAQ 或其他信息，鼓励用户继续探索。</p>
@@ -121,7 +160,7 @@ onMounted(() => {
 }
 
 .hero-text h1 {
-  font-size: 6vw;
+  font-size: 5vw;
   font-weight: bold;
 }
 
@@ -161,23 +200,25 @@ onMounted(() => {
   color: #888;
 }
 
-.main-image {
-  margin-right: 30px;
+.main-image-1 {
   max-width: 700px;
-  width: 100%;
-  height: auto;
+  margin-top: -100px;
 }
 
-/* 小屏设备下自动缩小图片 */
-@media (max-width: 1024px) {
-  .main-image {
-    max-width: 500px;
-    margin-right: 0;
-  }
+.main-image-2 {
+  max-width: 50%;
+  margin-right: 30px;
+  flex-shrink: 0;
+}
+
+.main-image-3,
+.main-image-4 {
+  max-width: 50%;
+  margin: 20px 0;
 }
 
 @media (max-width: 768px) {
-  .main-image {
+  .main-image-2 {
     max-width: 100%;
     margin: 0 auto;
   }
@@ -215,5 +256,106 @@ onMounted(() => {
 .fade-enter-to {
   opacity: 1;
   transform: translateY(0);
+}
+
+.image-text-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 40px;
+  margin: 40px 0;
+}
+
+@media (max-width: 768px) {
+  .image-text-block {
+    flex-wrap: wrap;
+  }
+}
+
+.side-text {
+  flex: 1;
+  min-width: 300px;
+  margin-right: 5%;
+}
+
+.side-text h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.side-text p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+</style>
+
+<style scoped>
+.demonstration {
+  color: var(--el-text-color-secondary);
+}
+
+.el-carousel__item h3 {
+  color: #475669;
+  opacity: 0.75;
+  line-height: 150px;
+  margin: 0;
+  text-align: center;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
+}
+
+.image-text-block-2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  margin: 60px 0;
+  flex-wrap: wrap;
+}
+
+.site-purpose-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.site-purpose-text h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.site-purpose-text p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #444;
+  font-weight: 500;
+}
+
+.right-shift {
+  margin-left: 30px;
+}
+
+.fade-in-text {
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>
